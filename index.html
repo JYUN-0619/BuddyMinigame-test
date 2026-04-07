@@ -8,7 +8,6 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
 
-    <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
@@ -58,11 +57,6 @@
         </div>
       </div>
       <div id="unity-warning"> </div>
-      <div id="unity-footer">
-        <div id="unity-logo-title-footer"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Buddy Minigame</div>
-      </div>
     </div>
     <script>
       var canvas = document.querySelector("#unity-canvas");
@@ -129,6 +123,7 @@
         productName: "Buddy Minigame",
         productVersion: "1.0",
         showBanner: unityShowBanner,
+        devicePixelRatio: window.devicePixelRatio || 1
       };
 
       document.querySelector("#unity-loading-bar").style.display = "block";
@@ -141,9 +136,7 @@
         }).then((unityInstance) => {
           window.unityInstance = unityInstance;
           document.querySelector("#unity-loading-bar").style.display = "none";
-          document.querySelector("#unity-fullscreen-button").onclick = () => {
-            unityInstance.SetFullscreen(1);
-          };
+
         }).catch((message) => {
           alert(message);
         });
