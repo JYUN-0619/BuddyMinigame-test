@@ -1,20 +1,24 @@
 body {
     margin: 0;
     padding: 0;
-    background: #111; /* Darker background looks cleaner outside the game area */
+    background: #111;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+    position: fixed; /* Locks the page, ignoring address bar shifts */
+    top: 0;
+    left: 0;
     overflow: hidden;
+    touch-action: none; /* Prevents pull-to-refresh and swipe scrolling */
 }
 
 #unity-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative; /* Keeps absolute children like loading bars contained */
+    position: relative;
 }
 
 #unity-canvas {
@@ -31,11 +35,6 @@ body {
 }
 }
 ;
-}
-
-/* Hide the footer and all its contents completely */
-#unity-footer {
-    display: none !important;
 }
 
 #unity-loading-bar {

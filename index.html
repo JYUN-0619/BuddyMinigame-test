@@ -90,6 +90,11 @@
 
       resizeCanvas();
       window.addEventListener('resize', resizeCanvas);
+      
+      // Fixes the rotation calculation on mobile
+      window.addEventListener('orientationchange', function() {
+        setTimeout(resizeCanvas, 100); 
+      });
       // ─────────────────────────────────────────────────────────────────────
 
       function unityShowBanner(msg, type) {
@@ -123,7 +128,9 @@
         productName: "Buddy Minigame",
         productVersion: "1.0",
         showBanner: unityShowBanner,
-        devicePixelRatio: window.devicePixelRatio || 1
+        
+        // Cap the ratio at 1.5 to prevent texture memory crashes and scaling bugs!
+        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 1.5)
       };
 
       document.querySelector("#unity-loading-bar").style.display = "block";
